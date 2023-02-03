@@ -35,13 +35,13 @@ class Dashboard{
 	    						->orWhere("extension","pptx")->Where("uploaded_by", $user->id)->count("id", "files")[0]->files;
 
 	    	// pending signing requests 
-	    	$pendingRequests = Database::table("requests")->where("sent_by" , $user->id)->where("status" , "Pending")->count("id", "total")[0]->total;
-    	}else{
-	        $fileLimit = env("BUSINESS_FILE_LIMIT");
-	        $diskLimit = env("BUSINESS_DISK_LIMIT");
-	        $diskUsage = Database::table("files")->where("company" , $user->company)->sum("size", "size")[0]->size;
-	        $fileUsage = Database::table("files")->where("company" , $user->company)->count("id", "files")[0]->files;
-	        $folders = Database::table("folders")->where("company" , $user->company)->count("id", "folders")[0]->folders;
+	    	//$pendingRequests = Database::table("requests")->where("sent_by" , $user->id)->where("status" , "Pending")->count("id", "total")[0]->total;
+    	//}else{
+	        //$fileLimit = env("BUSINESS_FILE_LIMIT");
+	        //$diskLimit = env("BUSINESS_DISK_LIMIT");
+	        //$diskUsage = Database::table("files")->where("company" , $user->company)->sum("size", "size")[0]->size;
+	        //$fileUsage = Database::table("files")->where("company" , $user->company)->count("id", "files")[0]->files;
+	        //$folders = Database::table("folders")->where("company" , $user->company)->count("id", "folders")[0]->folders;
 
 	        // signed vs unsigned
 	        $signed = Database::table("files")->where("company" , $user->company)->where("status" , "Signed")->count("id", "total")[0]->total;
